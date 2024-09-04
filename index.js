@@ -68,6 +68,12 @@ const GameController = (function () {
     }
     document.getElementById("turn").textContent = "Player 1's turn";
   }
+  function setPlayersName(name1, name2) {
+    player1.name = name1;
+    player2.name = name2;
+    document.getElementById("name1").textContent = player1.name;
+    document.getElementById("name2").textContent = player2.name;
+  }
   function cellSelection(cellId) {
     const cell = document.getElementById(cellId);
     cell.classList.replace("cell-white", "cell-" + opponent.color);
@@ -78,7 +84,7 @@ const GameController = (function () {
       document.getElementById("score" + opponent.id).textContent =
         opponent.score;
       document.getElementById("turn").textContent =
-        "Player " + opponent.id + " won the match!";
+        opponent.name + " won the match!";
     } else if (isDraw()) {
       hasFreezed = true;
       document.getElementById("turn").textContent = "Draw!";
@@ -95,6 +101,7 @@ const GameController = (function () {
     cellSelection,
     playAgain,
     reset,
+    setPlayersName,
   };
 })();
 function onReset() {
@@ -103,10 +110,25 @@ function onReset() {
 function onPlayAgain() {
   GameController.playAgain();
 }
+function handleFormSubmit(event) {
+  event.preventDefault();
+
+  var name1 = document.getElementById("player1").value;
+  var name2 = document.getElementById("player2").value;
+  GameController.setPlayersName(name1, name2);
+  var myModal = bootstrap.Modal.getInstance(
+    document.getElementById("setNameModal")
+  );
+  myModal.hide();
+}
 const gameContainer = document.querySelector(".game-container");
 gameContainer.addEventListener("click", (e) => {
   const className = e.target.classList[0];
   if (GameController.hasFreezed === false && className === "cell-white") {
     GameController.cellSelection(e.target.id);
   }
+});
+document.getElementById("set-name").addEventListener("click", (e) => {
+  var myModal = new bootstrap.Modal(document.getElementById("setNameModal"));
+  myModal.show();
 });

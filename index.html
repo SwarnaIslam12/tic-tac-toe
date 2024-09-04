@@ -14,6 +14,14 @@
       <span class="navbar-brand mb-0 h1" style="margin-left: 10px"
         >Tic Tac Toe</span
       >
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        style="margin-right: 20px"
+        type="submit"
+        id="set-name"
+      >
+        Set Players Name
+      </button>
     </nav>
     <div class="container m-0">
       <div
@@ -27,7 +35,7 @@
             font-family: 'Brush Script MT', cursive;
           "
         >
-          <h2>Player 1</h2>
+          <h2 id="name1">Player 1</h2>
           <h3>Score:<span id="score1">0</span></h3>
         </div>
         <div class="col-sm-6">
@@ -72,8 +80,44 @@
             font-family: 'Brush Script MT', cursive;
           "
         >
-          <h2>Player 1</h2>
+          <h2 id="name2">Player 1</h2>
           <h3>Score:<span id="score2">0</span></h3>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="setNameModal"
+      tabindex="-1"
+      aria-labelledby="setNameModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="setNameModalLabel">Set name</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="handleFormSubmit(event)">
+              <div class="mb-3">
+                <label for="player1" class="form-label">Player 1's name</label>
+                <input type="text" class="form-control" id="player1" required />
+              </div>
+              <div class="mb-3">
+                <label for="player2" class="form-label">Player 2's name</label>
+                <input type="text" class="form-control" id="player2" required />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

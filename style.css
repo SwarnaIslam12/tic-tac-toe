@@ -1,0 +1,39 @@
+html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 20px;
+    width: 340px;
+    margin: auto;
+}
+
+.cell-red {
+    background-color: rgb(222, 16, 16);
+}
+
+.cell-black {
+    background-color: black;
+}
+
+.cell-white {
+    background-color: white;
+}
+
+.cell {
+
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+}

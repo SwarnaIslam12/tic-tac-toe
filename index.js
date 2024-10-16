@@ -67,6 +67,7 @@ const GameController = (function () {
       }
     }
     document.getElementById("turn").textContent = "Player 1's turn";
+    opponent = player1;
   }
   function setPlayersName(name1, name2) {
     player1.name = name1;
